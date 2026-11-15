@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <title>Liquid OTP UI Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="showcase">
+    <h1>Liquid OTP UI Animation</h1>
+
+    <section class="otp-card" id="otpCard" aria-labelledby="title">
+      <div class="interaction-area">
+        <h2 id="title">Enter Security Code</h2>
+        <p class="subtitle">Please enter the 6-digit code sent to your email.</p>
+
+        <form id="otpForm" novalidate>
+          <div class="otp-control" id="otpControl">
+            <div class="liquid-layer" aria-hidden="true">
+              <div class="blob-wrapper" id="blobs">
+                <span class="blob"></span><span class="blob"></span>
+                <span class="blob"></span><span class="blob"></span>
+                <span class="blob"></span><span class="blob"></span>
+              </div>
+            </div>
+
+            <div class="inputs-layer" id="inputs">
+              <input type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="1" class="otp-input" aria-label="Digit 1" autofocus>
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 2">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 3">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 4">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 5">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-input" aria-label="Digit 6">
+            </div>
+          </div>
+
+          <div class="feedback" id="feedback" aria-live="polite"></div>
+
+          <div class="icon-container check" id="checkIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path class="draw-path" d="M4.5 12.5 9.2 17 19.5 6.5"/></svg>
+          </div>
+          <div class="icon-container cross" id="crossIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path class="draw-path" d="M6 6 18 18M18 6 6 18"/></svg>
+          </div>
+
+          <button class="confirm-button" id="confirmButton" type="submit">Confirm Identity</button>
+        </form>
+
+        <button class="reset-button" id="resetButton" type="button">Try again</button>
+      </div>
+    </section>
+
+    <p class="demo-note">Six-digit email verification · Liquid morph animation</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+*{box-sizing:border-box}
+:root{font-family:Arial,Helvetica,sans-serif;color:#101827;background:#080b12}
+html,body{margin:0;min-width:320px;min-height:100%;background:#080b12}
+body{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:26px 14px}
+.showcase{width:min(100%,460px);display:flex;flex-direction:column;align-items:center}
+.showcase h1{margin:0 0 18px;color:#75b4ff;font-size:clamp(21px,5vw,29px);line-height:1.2;font-weight:750;letter-spacing:-.025em;text-align:center;text-shadow:0 0 10px #4b9cff80}
+.otp-card{width:100%;max-width:450px;min-height:400px;padding:24px 22px;background:#fdfdfd;border:10px solid #e7eaf0;border-radius:27px;box-shadow:0 12px 30px #0005;display:flex;align-items:center;justify-content:center}
+.interaction-area{width:100%;text-align:center;position:relative}
+.interaction-area h2{margin:0 0 8px;font-size:clamp(18px,4vw,23px);font-weight:750;color:#151923}
+.subtitle{margin:0;color:#858b96;font-size:12px;line-height:1.45}
+#otpForm{margin-top:40px}
+.otp-control{width:min(100%,338px);height:64px;margin:0 auto;position:relative}
+.liquid-layer,.inputs-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between}
+.blob-wrapper{width:100%;height:100%;display:flex;align-items:center;justify-content:space-between;filter:url(#none)}
+.blob{width:16.6667%;height:100%;border-radius:50%;background:#e3e8f1;transition:background .35s ease,transform .4s cubic-bezier(.2,.8,.2,1),border-radius .4s ease;position:relative}
+.blob:not(:first-child){margin-left:-2.5%}
+.otp-control.has-value .blob{background:#b9d2ff;border-radius:35%}
+.otp-control.processing .blob{background:#3779f6;transform:scale(.95);border-radius:50%}
+.otp-control.error .blob{background:#ef3d3d}
+.otp-control.success .blob{background:#22bd62}
+.inputs-layer{gap:0}
+.otp-input{width:16.6667%;height:100%;min-width:0;border:0;outline:0;background:transparent;text-align:center;color:#15213a;font-size:18px;font-weight:700;caret-color:#3779f6;padding:0;z-index:2}
+.otp-input:focus{color:#10234a}
+.otp-input::selection{background:#a9c7ff}
+.feedback{height:23px;margin-top:13px;font-size:11px;font-weight:600;color:#e33c3c;opacity:0;transition:opacity .2s}
+.feedback.visible{opacity:1}
+.confirm-button{width:min(100%,338px);height:48px;border:0;border-radius:9px;background:#101827;color:#fff;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 3px 7px #0002;transition:background .25s,transform .2s,box-shadow .2s}
+.confirm-button:hover{background:#1b2940;transform:translateY(-1px);box-shadow:0 6px 12px #0002}
+.confirm-button:active{transform:translateY(1px)}
+.confirm-button:disabled{cursor:wait;opacity:1}
+.otp-card.error-state .confirm-button{background:#ef3939}
+.otp-card.success-state .confirm-button{background:#20b95e}
+.icon-container{position:absolute;top:115px;left:50%;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;transform:translate(-50%,-50%) scale(.2);opacity:0;pointer-events:none;z-index:5;transition:opacity .25s,transform .45s cubic-bezier(.2,.9,.25,1.2)}
+.icon-container svg{width:29px;height:29px;overflow:visible}
+.draw-path{fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40}
+.icon-container.check{background:#20bd63}
+.icon-container.cross{background:#ed3838}
+.otp-card.success-state .icon-container.check,.otp-card.error-state .icon-container.cross{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.otp-card.success-state .check .draw-path,.otp-card.error-state .cross .draw-path{animation:draw .45s .2s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.otp-card.success-state .otp-control,.otp-card.error-state .otp-control{opacity:0;transform:scale(.55);transition:opacity .35s,transform .45s}
+.otp-control{transition:opacity .35s,transform .45s}
+.reset-button{display:none;margin:13px auto 0;padding:0;border:0;background:none;color:#687387;font-size:11px;text-decoration:underline;cursor:pointer}
+.otp-card.error-state .reset-button,.otp-card.success-state .reset-button{display:block}
+.otp-card.error-state .feedback,.otp-card.success-state .feedback{opacity:1}
+.otp-card.success-state .feedback{color:#169c4d}
+.demo-note{margin:16px 0 0;color:#68758a;font-size:10px;text-align:center}
+@media(max-width:420px){.otp-card{min-height:375px;padding:22px 13px;border-width:8px}.otp-control{height:57px}.blob{height:57px}#otpForm{margin-top:33px}.icon-container{top:105px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
